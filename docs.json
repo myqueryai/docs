@@ -71,14 +71,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "Signup Free",
+          "href": "https://myquery.ai/register",
           "icon": "book-open-cover"
         },
         {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "href": "https://discord.gg/3kmWKxH4",
+          "icon": "discord"
         },
         {
           "anchor": "Blog",
@@ -96,7 +96,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@myquery.ai"
       }
     ],
     "primary": {
