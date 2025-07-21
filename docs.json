@@ -79,11 +79,6 @@
           "anchor": "Community",
           "href": "https://discord.gg/3kmWKxH4",
           "icon": "discord"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
