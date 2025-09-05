@@ -55,6 +55,11 @@
           "href": "https://myquery.ai/register",
           "icon": "book-open-cover"
         },
+                {
+          "anchor": "Blog",
+          "href": "https://blog.myquery.ai",
+          "icon": "blog"
+        },
         {
           "anchor": "Community",
           "href": "https://discord.gg/3kmWKxH4",
