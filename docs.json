@@ -25,6 +25,7 @@
             "group": "Customization",
             "pages": [
               "database/oracle",
+              "database/postgres",
               "essentials/navigation"
             ]
           },
