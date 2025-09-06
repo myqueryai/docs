@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "MyQuery.ai",
   "colors": {
     "primary": "#000001",
      "dark": "#15803D",
