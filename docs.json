@@ -24,7 +24,7 @@
           {
             "group": "Customization",
             "pages": [
-              "database/Oracle",
+              "database/oracle",
               "essentials/navigation"
             ]
           },
