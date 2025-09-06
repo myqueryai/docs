@@ -1,22 +1,59 @@
 ---
 title: "Getting started"
-description: "Unlock insights from your data with natural language queries"
+description: "Unlock insights from your data using natural-language questions in Arabic, English, and more—no SQL required."
 ---
 
-MyQuery is a data platform designed to help you automatically surface insights from any given dataset. You can communicate with Ana, our data scientist, using natural language and get verifiable analyses that range from simple queries to complex visualizations.
+## What is MyQuery?
+
+**MyQuery** is a data platform that turns **multilingual natural-language questions** (Arabic, English, and more) into **verifiable SQL** and **clear visualizations**. Ask in your own language, review the generated query, and trust the results with built-in explainability and audit logs.
 
 ## Why MyQuery?
 
-MyQuery empowers everyone in your organization to quickly derive valuable business insights without writing SQL. By translating natural language questions into correct-by-construction queries, TextQL accelerates decision-making and reduces the burden on data teams. Non-technical users can confidently explore data on their own, while data professionals save time previously spent on repetitive query writing and troubleshooting.
+- **No SQL needed:** Ask in your language (Arabic, English, …) → production-grade SQL.
+- **Verifiable by design:** Inspect queries, lineage, and execution logs.
+- **Faster decisions:** Self-serve analytics for non-technical teams.
+- **Fewer tickets:** Data teams spend less time on repetitive requests.
+- **Flexible deployment:** Cloud or on-prem, with schema-only access options.
+- **Broad database support:** Oracle, PostgreSQL, MySQL, SQL Server, Snowflake, BigQuery, Redshift, MongoDB, SQLite, MariaDB, and more.
 
-## Getting Started
+## Getting started
 
-**Not a Customer?**
+### 1) Check access
+You need an active **MyQuery organization** to sign in. If you’re not a customer yet, register your interest **[here](https://myquery.ai/register)**.
 
-You must have an active MyQuery organization to log in or create an account. If you’re not yet a customer, share your interest [**here**](https://myquery.ai/register) .
+### 2) Sign in
+Go to **[login](https://mtquery.ai/login)** and sign in with **Google** or request a **magic link** to your email.
 
-**Logging In**
+### 3) Create your workspace
+Create (or join) an organization and workspace. Invite teammates and assign roles (Admin, Editor, Viewer).
 
-To access MyQuery, visit [login](https://mtquery.ai/login). Login using Google Authentication or a magic link sent directly to your email.
+### 4) Connect a database
+Add a connection using read-only credentials:
+- Minimum privileges: **SELECT** on the schemas/tables you want to query.
+- Recommended: **schema-only visibility** for least-privilege access.
+- Supported engines include Oracle, PostgreSQL, MySQL, SQL Server, Snowflake, BigQuery, Redshift, MongoDB, SQLite, MariaDB, and others.
 
-## 
+### 5) Sync schema
+MyQuery scans table/column metadata to build a semantic layer (no raw data copied). You can add friendly names and descriptions to improve NL accuracy.
+
+### 6) Ask your first question
+Open **AI Query**, type a business question in **your preferred language**  
+(e.g., **العربية:** *“ما هو إجمالي الإيرادات لكل منطقة خلال الربع الثاني مقارنة بالأول؟”*  
+أو **English:** *“Weekly active users by country for the last 8 weeks.”*)  
+Preview the **generated SQL**, then run it to view results or save a chart/dashboard.
+
+## Tips for best results
+
+- **Be specific:** Include metrics, time ranges, and dimensions.
+- **Name things clearly:** Add descriptions/aliases for columns (e.g., `customer_id` → “Customer ID”).
+- **Use read-only users:** Keep credentials scoped to the schemas you need.
+
+## Security at a glance
+
+- **Encryption in transit & at rest**
+- **Least-privilege, schema-only access**
+- **Audit logs** for queries and actions
+- **On-prem deployment** option for full data residency control
+
+---
+Need help? Reach us from the in-app chat or contact support.
