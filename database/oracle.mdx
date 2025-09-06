@@ -32,22 +32,7 @@ Connect with a username/password and an EZCONNECT descriptor.
 3. Enter **Username** and **Password** (read-only privileges).  
 4. Click **Test Connection**, then **Save**.  
 
-### Minimal read-only privileges (example)
 
-```sql
--- Create read-only user
-CREATE USER MYQUERY_RO IDENTIFIED BY "StrongPassword!123";
-GRANT CREATE SESSION TO MYQUERY_RO;
-
--- Grant SELECT on required objects (use explicit schema prefixes)
-GRANT SELECT ON HR.EMPLOYEES   TO MYQUERY_RO;
-GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_RO;
-
--- (Recommended) Manage grants via a role you control
--- CREATE ROLE MYQUERY_READER;
--- GRANT SELECT ON HR.EMPLOYEES   TO MYQUERY_READER;
--- GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_READER;
--- GRANT MYQUERY_READER TO MYQUERY_RO;
 
 ## Method B — Oracle Cloud (OCI) via Wallet (mTLS)
 
