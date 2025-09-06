@@ -48,51 +48,32 @@ GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_RO;
 -- GRANT SELECT ON HR.EMPLOYEES   TO MYQUERY_READER;
 -- GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_READER;
 -- GRANT MYQUERY_READER TO MYQUERY_RO;
-Method B — Oracle Cloud (OCI) via Wallet (mTLS)
+
+## Method B — Oracle Cloud (OCI) via Wallet (mTLS)
+
 Connect to Autonomous Database (ADB) using an Oracle Wallet (ZIP) and a TNS alias.
 
-Prerequisites
-Wallet ZIP downloaded from OCI Console
-(contains: tnsnames.ora, sqlnet.ora, cwallet.sso, etc.)
+### Prerequisites
 
-A read-only database user
+- Wallet ZIP downloaded from OCI Console  
+  (contains: `tnsnames.ora`, `sqlnet.ora`, `cwallet.sso`, etc.)
+- A read-only database user
 
-Note
-Wallet handling: Wallet files are used as provided by the customer. No modifications or temporary copies.
+> **Note**  
+> **Wallet handling**: Wallet files are used _as provided_ by the customer. No modifications or temporary copies.
 
-Steps
-Open Add Connection → Oracle → OCI Wallet.
+### Steps
 
-Upload the Wallet ZIP.
+1. Open **Add Connection → Oracle → OCI Wallet**.  
+2. Upload the **Wallet ZIP**.  
+3. Select a **TNS alias** from `tnsnames.ora` (e.g., `MYADB_LOW`, `MYADB_MEDIUM`, `MYADB_HIGH`).  
+4. Enter **Username** and **Password** for the read-only user.  
+5. If the wallet is password-protected, provide the **wallet password**.  
+6. Click **Test Connection**, then **Save**.  
 
-Select a TNS alias from tnsnames.ora (e.g., MYADB_LOW, MYADB_MEDIUM, MYADB_HIGH).
+### Example — `tnsnames.ora` aliases
 
-Enter Username and Password for the read-only user.
-
-If the wallet is password-protected, provide the wallet password.
-
-Click Test Connection, then Save.
-
-Example — tnsnames.ora aliases
-ini
-Copy code
+```ini
 MYADB_LOW    = (description= ...)
 MYADB_MEDIUM = (description= ...)
 MYADB_HIGH   = (description= ...)
-Network allowlist
-Note
-Firewall allowlist: Add the following IP to allow traffic from MyQuery to your database:
-62.171.190.236
-
-Troubleshooting
-ORA-12514: listener does not currently know of service requested
-Verify the Service name or TNS alias and that the service is running.
-
-ORA-01017: invalid username/password
-Check credentials, ensure the user has CREATE SESSION, and confirm the password has not expired.
-
-ORA-28759 / ORA-28353 (Wallet errors)
-Use the correct Wallet ZIP from OCI and ensure contents weren’t altered.
-
-Timeout / connection refused
-Check firewall rules, ensure the correct port is open, and database is reachable from MyQuery servers.
