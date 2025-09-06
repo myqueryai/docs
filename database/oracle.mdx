@@ -1,6 +1,98 @@
 ---
 title: "Oracle"
-description: "Description of your new file."
+description: "Connect to Oracle using EZCONNECT or OCI Wallet (mTLS)."
 ---
 
 # Connect your database
+
+Choose one of the following methods.
+
+---
+
+## Method A — EZCONNECT (host:port/service)
+
+Connect with a username/password and an EZCONNECT descriptor.
+
+### Required fields
+
+- **Host**: e.g., `localhost` or a server IP  
+- **Port**: `1521` (default)  
+- **Service name** (recommended): e.g., `XEPDB1` (Oracle XE 21c)  
+- **Username / Password**: read-only user  
+
+### Formats
+
+- Service name: `host:port/service_name` → `localhost:1521/XEPDB1`  
+- Legacy SID: `host:port:SID` → `db.example.com:1521:ORCL`  
+
+### Steps
+
+1. Open **Add Connection → Oracle → EZCONNECT**.  
+2. Enter **Host**, **Port**, and **Service name** (or **SID**).  
+3. Enter **Username** and **Password** (read-only privileges).  
+4. Click **Test Connection**, then **Save**.  
+
+### Minimal read-only privileges (example)
+
+```sql
+-- Create read-only user
+CREATE USER MYQUERY_RO IDENTIFIED BY "StrongPassword!123";
+GRANT CREATE SESSION TO MYQUERY_RO;
+
+-- Grant SELECT on required objects (use explicit schema prefixes)
+GRANT SELECT ON HR.EMPLOYEES   TO MYQUERY_RO;
+GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_RO;
+
+-- (Recommended) Manage grants via a role you control
+-- CREATE ROLE MYQUERY_READER;
+-- GRANT SELECT ON HR.EMPLOYEES   TO MYQUERY_READER;
+-- GRANT SELECT ON HR.DEPARTMENTS TO MYQUERY_READER;
+-- GRANT MYQUERY_READER TO MYQUERY_RO;
+Method B — Oracle Cloud (OCI) via Wallet (mTLS)
+Connect to Autonomous Database (ADB) using an Oracle Wallet (ZIP) and a TNS alias.
+
+Prerequisites
+Wallet ZIP downloaded from OCI Console
+(contains: tnsnames.ora, sqlnet.ora, cwallet.sso, etc.)
+
+A read-only database user
+
+Note
+Wallet handling: Wallet files are used as provided by the customer. No modifications or temporary copies.
+
+Steps
+Open Add Connection → Oracle → OCI Wallet.
+
+Upload the Wallet ZIP.
+
+Select a TNS alias from tnsnames.ora (e.g., MYADB_LOW, MYADB_MEDIUM, MYADB_HIGH).
+
+Enter Username and Password for the read-only user.
+
+If the wallet is password-protected, provide the wallet password.
+
+Click Test Connection, then Save.
+
+Example — tnsnames.ora aliases
+ini
+Copy code
+MYADB_LOW    = (description= ...)
+MYADB_MEDIUM = (description= ...)
+MYADB_HIGH   = (description= ...)
+Network allowlist
+Note
+Firewall allowlist: Add the following IP to allow traffic from MyQuery to your database:
+62.171.190.236
+
+Troubleshooting
+ORA-12514: listener does not currently know of service requested
+Verify the Service name or TNS alias and that the service is running.
+
+ORA-01017: invalid username/password
+Check credentials, ensure the user has CREATE SESSION, and confirm the password has not expired.
+
+ORA-28759 / ORA-28353 (Wallet errors)
+Use the correct Wallet ZIP from OCI and ensure contents weren’t altered.
+
+Timeout / connection refused
+Check firewall rules, ensure the correct port is open, and database is reachable from MyQuery servers.
