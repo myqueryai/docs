@@ -22,10 +22,10 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Database Connection",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "essentials/Oracle",
+              "essentials/Postgres"
             ]
           },
           {
